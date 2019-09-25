@@ -1,4 +1,4 @@
-package CodingInterview.CodingInterview;
+package backtracking;
 
 //Java program for Knight Tour problem
 class KnightTour {

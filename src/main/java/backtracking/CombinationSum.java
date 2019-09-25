@@ -1,4 +1,4 @@
-package CodingInterview.CodingInterview;
+package backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +18,6 @@ public class CombinationSum {
 		}
 
 	}
-
 }
 
 class Solution {

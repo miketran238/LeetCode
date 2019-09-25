@@ -1,4 +1,4 @@
-package CodingInterview.CodingInterview;
+package linkedlist;
 
 public class AddTwoLinkedList {
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) 
