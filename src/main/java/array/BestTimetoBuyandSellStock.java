@@ -67,8 +67,6 @@ public class BestTimetoBuyandSellStock {
                 }
                 int temp = prices[j] - prices[i];
                 if ( temp > max ) max = temp;
-			}
-		}
 		return max;
     	}
 	
