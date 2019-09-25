@@ -22,7 +22,7 @@ public class BestTimetoBuyandSellStock {
 	//Brute force: find all pairs of index i,j such that i < j and p[i] < p[j]
 	//then find the maximum difference between them
 	public int maxProfitBruteForce(int[] prices) 
-    {
+    	{
 		if ( prices.length < 2 ) return 0;
 		HashSet<Pair> set = new HashSet<>();
 		for ( int i = 0; i < prices.length-1; i++ ) {
@@ -38,11 +38,11 @@ public class BestTimetoBuyandSellStock {
 			max = temp > max ? temp : max;
 		}
 		return max;
-    }
+	}
 	
 	//Removing the set by comparing max in real time
 	public int maxProfitBruteForceWithoutSet(int[] prices) 
-    {
+    	{
 		int max = 0;
 		if ( prices.length < 2 ) return 0;
 		for ( int i = 0; i < prices.length-1; i++ ) {
@@ -52,11 +52,11 @@ public class BestTimetoBuyandSellStock {
 			}
 		}
 		return max;
-    }
+    	}
 	
 	//Jumping index i when we find a new local minimum
 	public int maxProfitJumpingInterval(int[] prices) 
-    {
+    	{
 		int max = 0;
 		if ( prices.length < 2 ) return 0;
 		for ( int i = 0; i < prices.length-1; i++ ) {
@@ -70,7 +70,7 @@ public class BestTimetoBuyandSellStock {
 			}
 		}
 		return max;
-    }
+    	}
 	
 	//Removing for loop over index i by using a local minimum variable
 	/**
@@ -79,19 +79,19 @@ public class BestTimetoBuyandSellStock {
 	 * @param prices
 	 * @return maximum profit
 	 */
-    public int maxProfit(int[] prices) 
-    {
+    	public int maxProfit(int[] prices) 
+    	{
 		int max = 0;
 		if ( prices.length < 2 ) return 0;
-        int localMin = prices[0];
-        for (int j = 1; j < prices.length; j++ ) {
-            if ( prices[j] < localMin ) {
-                localMin = prices[j];
-            }
-            if ( prices[j] - localMin  > max ) {
-            	max = prices[j] - localMin;
-            }
-        }
+		int localMin = prices[0];
+		for (int j = 1; j < prices.length; j++ ) {
+		    if ( prices[j] < localMin ) {
+			localMin = prices[j];
+		    }
+		    if ( prices[j] - localMin  > max ) {
+			max = prices[j] - localMin;
+		    }
+		}
 		return max;
-    }
+    	}
 }
