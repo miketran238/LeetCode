@@ -27,11 +27,17 @@ public class PaintHouse {
 			dp[0][j] = cost[0][j];
 		}
 		for(int i = 1; i < n; i++) {
-			dp[i][0] = Math.min(dp[i-1][1], dp[i-1][2]);
-			dp[i][1] = Math.min(dp[i-1][0], dp[i-1][2]);
-			dp[i][2] = Math.min(dp[i-1][1], dp[i-1][0]);
+			dp[i][0] = Math.min(dp[i-1][1], dp[i-1][2]) + cost[i][0];
+			dp[i][1] = Math.min(dp[i-1][0], dp[i-1][2]) + cost[i][1];
+			dp[i][2] = Math.min(dp[i-1][1], dp[i-1][0]) + cost[i][2];
 		}
 		return Math.min(dp[n-1][0], Math.min(dp[n-1][1], dp[n-1][2]));
+	}
+	
+	public static void main(String[] args) {
+		PaintHouse ph = new PaintHouse();
+		int[][] cost = new int[][] { {17,2,17} , {16,16,5}, {14,3,19} };
+		System.out.println(ph.paintHouse(cost));
 	}
 	
 }
