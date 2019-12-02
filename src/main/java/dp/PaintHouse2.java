@@ -32,19 +32,42 @@ public class PaintHouse2 {
 		for(int j = 0; j < k; j++) {
 			dp[0][j] = cost[0][j];
 		}
-		for(int i = 1; i < n; i++) {
-			int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
+		
+		//Need 3 values: preIndex, preMin, and preSecond
+		//PreIndex: index of the last chosen color
+		//PreMin: Min of last house
+		//PreSecond: Second minimum
+		int preMin = 0, preSec = 0;
+		int preIdx = -1;
+		for(int i = 0; i < n; i++) {
+			int curMin = Integer.MAX_VALUE, curSec = Integer.MAX_VALUE;
+			int curIdx = 0;
 			for(int j = 0; j < k; j++) {
-				dp[i][j] = Math.min(dp[i-1][j+1], dp[i-1][j+2]) + cost[i][j];
-				if ( dp[i][j] < min1 ) {
-					min1 = dp[i][j];
+				if ( j == preIdx ) {
+					cost[i][j] += preSec ;
+				} else {
+					cost[i][j] += preMin;
 				}
-				if ( dp[i][j] < min2 ) {
-					min2 = dp[i][j];
+				if ( cost[i][j] < curMin ) {
+					curSec = curMin;
+					curMin = cost[i][j];
+					curIdx = j;
+				} else if ( cost[i][j] < curSec ) {
+					curSec = cost[i][j];
 				}
+				//dp[i][j] = Math.min(dp[i-1][j+1], dp[i-1][j+2]) + cost[i][j];
 			}
+			preIdx = curIdx;
+			preMin = curMin;
+			preSec = curSec;
 		}
-		return Math.min(dp[n-1][0], Math.min(dp[n-1][1], dp[n-1][2]));
+		int result = Integer.MAX_VALUE;
+	    for(int j=0; j<cost[0].length; j++){
+	        if(result>cost[cost.length-1][j]){
+	            result = cost[cost.length-1][j];
+	        }
+	    }
+	    return result;
 	}
 	
 	public static void main(String[] args) {
